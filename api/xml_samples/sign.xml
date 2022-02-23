@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ns3:InitSessionSignedRequest xmlns="http://ksef.mf.gov.pl/schema/gtw/svc/online/types/2021/10/01/0001" xmlns:ns2="http://ksef.mf.gov.pl/schema/gtw/svc/types/2021/10/01/0001" xmlns:ns3="http://ksef.mf.gov.pl/schema/gtw/svc/online/auth/request/2021/10/01/0001">
+    <ns3:Context>
+        <Challenge>20220214-CR-A9EF419E76-9B78A7CA77-B7</Challenge>
+        <Identifier xsi:type="ns2:SubjectIdentifierByCompanyType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:Identifier>6260006801</ns2:Identifier>
+        </Identifier>
+        <DocumentType>
+            <ns2:Service>KSeF</ns2:Service>
+            <ns2:FormCode>
+                <ns2:SystemCode>FA (1)</ns2:SystemCode>
+                <ns2:SchemaVersion>1-0E</ns2:SchemaVersion>
+                <ns2:TargetNamespace>http://crd.gov.pl/wzor/2021/11/29/11089/</ns2:TargetNamespace>
+                <ns2:Value>FA</ns2:Value>
+            </ns2:FormCode>
+        </DocumentType>
+        <Type>SerialNumber</Type>
+    </ns3:Context>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+            <Reference URI="">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+                <DigestValue>HC2Cvp0HHpXH2Z1NAa3RO55QF8nnF7cQCJG0wiCS0oY=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue>ZjyEF6JzCBRRvzrUAYHSY7/uVH5KigDiC4HppmcR0bC/3/YreBwoHcLl/nqVlTB0auei8aLJ8VHdPlEUK54JrMnekWl7jNoonmRyddtXJAOqfUm9/yNIISulYkWiXf5ap3IYF+b1SEgepUkes/+nvpGyapqPSUs+OVp9yDVLSutm+ZFCjLfZaTYXPXb09qFe9R2nJL50W3n9BDwbS01H/Gcad7dwzkyJXIjz/5nzLv0JL1+JLe3n2u1HfpZHQ3f88xA/hAUBDz2e2b3eGglimsz0qbZMVnZTv4uBS6ShOKvAWACgJnrTLBa9EskdiUplDR1bpEktKAhJD1LvXNl2Pw==</SignatureValue>
+        <KeyInfo>
+            <X509Data>
+                <X509Certificate>MIIDuTCCAqECFGBU0OvAOAIaouVFzOInv2xTQAA8MA0GCSqGSIb3DQEBCwUAMIGYMRgwFgYDVQQDDA9BZGFtIE5vd2Frb3dza2kxEzARBgNVBAQMCk5vd2Frb3dza2kxDTALBgNVBCoMBEFkYW0xHDAaBgNVBAoME0Zpcm1hIEtvbnN1bHRpbmdvd2ExCzAJBgNVBAYTAlBMMRcwFQYDVQQFEw5OSVAtNjI2MDAwNjgwMTEUMBIGA1UEBwwLTWF6b3dpZWNraWUwHhcNMjIwMjA3MDg0OTQ5WhcNMjMwMjA3MDg0OTQ5WjCBmDEYMBYGA1UEAwwPQWRhbSBOb3dha293c2tpMRMwEQYDVQQEDApOb3dha293c2tpMQ0wCwYDVQQqDARBZGFtMRwwGgYDVQQKDBNGaXJtYSBLb25zdWx0aW5nb3dhMQswCQYDVQQGEwJQTDEXMBUGA1UEBRMOTklQLTYyNjAwMDY4MDExFDASBgNVBAcMC01hem93aWVja2llMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjx+V4fjC7Kx3rIuTSRzECoXUCHUSf82eGf902Qq31nrsi3AAFW6uAiPH/wZR6q63jdElGR2Jzny2hKGNLuQuJTl4x9FqsyjCK0E0ma8pLxiFY5KCiot0NzIkOYN0OfcEmYJmiotyIXTy1LvA4qh4otvuI1u3oLOAsijljdvNNlkTayIKMmf2/WFEZXt6yZQRgYsq3a2RZU7ArQ1OaPDGMMjhTUIhSVNpYp2NIwmSFUX5hcvjjoU6lON7ON24Qw2gfcYR2sNE3p8WPPMdLeiXFOh6/YrKjVDaoUfVJ+CnBuugcL/uJbMfQzGsI7EiaRUezcSHf5ZOAMyLMPneqGOJPQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQB/V1Aj+xZxkcIUzaKgxP64jY+DYVPRWAaFZggr8PmPf7w8nJBHuHCz4iG5HIa0VOI8QvUj639IXwgDVwxpWAy1B/2OpgwhkdC17sG2KhX3NP5aHo0pabHDA/ZUsIPhBNvO+fam8KGwLrwrLPLMxqCflNSOijtwMmBlG8XZOxxmW9AtNln+aQcQuFsWOJgpre9d3vT+4GC0h9FYER1Qnq0sBH9Pl+abESHtGdK+Y8ob6H5MyblAKOgVqo/53JjWhtPeryxIBmls91drePs57PMWiPf1TqFFvzk5XTbgVRIu9cTcJGDmXAtAfble1jH3Ga7zPu3r3OnOs2UOU4AxjCMt</X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
+</ns3:InitSessionSignedRequest>
