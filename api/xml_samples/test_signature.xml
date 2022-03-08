@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns3:InitSessionSignedRequest xmlns="http://ksef.mf.gov.pl/schema/gtw/svc/online/types/2021/10/01/0001" xmlns:ns2="http://ksef.mf.gov.pl/schema/gtw/svc/types/2021/10/01/0001" xmlns:ns3="http://ksef.mf.gov.pl/schema/gtw/svc/online/auth/request/2021/10/01/0001">
+    ns3:Context
+    <Timestamp>2022-03-02T13:03:19.792Z</Timestamp>
+    <Challenge>20220302-CR-98D4E2F48F-939B0FBFED-9F</Challenge>
+    <Identifier xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:SubjectIdentifierByCompanyType">
+        ns2:Identifier1801908070
+        </ns2:Identifier>
+    </Identifier>
+    <DocumentType>
+        ns2:ServiceKSeF
+        </ns2:Service>
+        ns2:FormCode
+ns2:SystemCodeFA (1)
+        </ns2:SystemCode>
+        ns2:SchemaVersion1-0E
+        </ns2:SchemaVersion>
+        ns2:TargetNamespacehttp://crd.gov.pl/wzor/2021/11/29/11089/
+        </ns2:TargetNamespace>
+        ns2:ValueFA
+        </ns2:Value>
+        </ns2:FormCode>
+    </DocumentType>
+    <Type>SerialNumber</Type>
+    </ns3:Context>
+    <ds:Signature Id="Signature" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        ds:SignedInfo
+        <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <ds:Reference URI="">
+            ds:Transforms
+            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            </ds:Transforms>
+            <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            ds:DigestValueSG5c4GMTJOV+tSVrdObjYq5OtTU=
+            </ds:DigestValue>
+        </ds:Reference>
+        <ds:Reference URI="#SignedProperties" Type="http://uri.etsi.org/01903#SignedProperties">
+            <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            ds:DigestValuewumf/fP/xT6X8xWIY/FI3zZwjmc=
+            </ds:DigestValue>
+        </ds:Reference>
+        </ds:SignedInfo>
+        ds:SignatureValuemsGCjaz1FV7F19KVLwOV80ln9eTKq2oG290oGbbOC+lJBMrceJBYWt64Mqx37U6xh8i+SUk0xF6elB14LNxcMQVtsQAbPoOjbYO8gPZWclTGJJ+W3xyBARjqz8KtGnkWf3b5YVTV+eEc59mcRIuPGf2S4F69dx3zMDmopA6S3hSQFnlOF0ZZfgzS8aahuwhtxyo0JC8MouMbnsapWdIOtRwCHRT0RB7lGoyiDImgC99VgxjvSCjKiiER8jAuMwv4oN1x4ENjgFwZEIfvW8mmavcNY6oDpBqTdCnXqpEzr/vpVnBdDc7D/1luJBq8PbmqsgYq1dXfi12Frz5pSSiglA==
+        </ds:SignatureValue>
+        ds:KeyInfo
+ds:X509Data
+ds:X509CertificateMIIEWDCCA0CgAwIBAgIQeZwlXqc5IrhDTEqjRHtDkzANBgkqhkiG9w0BAQUFADCBgTEZMBcGA1UEYQwQVkFUUEwtMTgwMTkwODA3MDEUMBIGA1UEAwwLdGVzdCBrbGllbnQxDDAKBgNVBAsMA0VDTTEOMAwGA1UECgwFc2tpY2gxDzANBgNVBAcMBkx1YmxpbjESMBAGA1UECAwJTHViZWxza2llMQswCQYDVQQGEwJQTDAeFw0yMjAzMDIxMTI4MjBaFw0yMzAzMDIxMTQ4MjBaMIGBMRkwFwYDVQRhDBBWQVRQTC0xODAxOTA4MDcwMRQwEgYDVQQDDAt0ZXN0IGtsaWVudDEMMAoGA1UECwwDRUNNMQ4wDAYDVQQKDAVza2ljaDEPMA0GA1UEBwwGTHVibGluMRIwEAYDVQQIDAlMdWJlbHNraWUxCzAJBgNVBAYTAlBMMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3LMCprhc847iALezKOLGTzHcsV6g9YJ/Cr4QDj/5HHTyr+oqyrO2F2Ah/IAUvxRhBD6UkEyxPsZ+vB18RQ7C1da7UXVvts6it0XUVdyqDc+xlPQMngY0aMaEE5LwpTkv4N3E3UaUna5t7Wo/ilQ+z8djCz+f2w1V4AvMlE/a8czjRyjOZPZ0zbZ6fN5ubF3Y4l1JICXLUd/StGpfMZvx0TQ5NRw8D6VQEf4GI7hYANiFbN66qQ1umkzuRkErKkLrNCbw+ypbZSTVWRgBi0vYXSCfjQfSIhdGR9AVEzSGs55XNvGU+zflI8PnkyspaZmpXYxXlzeVrkkZPJUGX46kyQIDAQABo4HJMIHGMA4GA1UdDwEB/wQEAwIFoDCBlAYJKoZIhvcNAQkPBIGGMIGDMA4GCCqGSIb3DQMCAgIAgDAOBggqhkiG9w0DBAICAIAwBwYFKw4DAgcwCgYIKoZIhvcNAwcwCwYJYIZIAWUDBAEqMAsGCWCGSAFlAwQBLTALBglghkgBZQMEARYwCwYJYIZIAWUDBAEZMAsGCWCGSAFlAwQBAjALBglghkgBZQMEAQUwHQYDVR0OBBYEFH2NzJGKB4tZTj0nYcWZDspHjr7hMA0GCSqGSIb3DQEBBQUAA4IBAQBEa7frxZK40LFKqQqb+ZMDyQGpNUQkmM+BCiYurLmRKRD42UFdBj0oxH7WeszKINo9SxSuYFXZTqDTPB8RICBrNsxqrWIZuE51h+aun0ofNGIYIZe/zbDYnLtE+fzk+2bHNOtnF+nJLFTtJXKK6dXEDe+fGSHcm18Nza+seE1jY3r2Rl5m6gYT8d2IYwn5GuxlcCgB0tTfh/BrmAAuqI7PyG4mfZoUioUSgovVe7xIlD+wCErKICCiRg5KbBr3SaunP/Brt65V7qfeKlbz9a0ACiJz1pcBFsuzLD/nNxBeCJCXWedUP+fGDMUSIwRenGsh/05ZS31jF/8KoTry2fYQ
+        </ds:X509Certificate>
+        </ds:X509Data>
+        </ds:KeyInfo>
+        ds:Object
+        <xades:QualifyingProperties Target="#Signature" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#">
+            <xades:SignedProperties Id="SignedProperties">
+                xades:SignedSignatureProperties
+xades:SigningTime2022-03-02T13:04:27Z
+                </xades:SigningTime>
+                xades:SigningCertificate
+xades:Cert
+xades:CertDigest
+                <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                ds:DigestValueErfs7nHOPwERfnkqluhYq/fJ4+g=
+                </ds:DigestValue>
+                </xades:CertDigest>
+                xades:IssuerSerial
+ds:X509IssuerNameC=PL, S=Lubelskie, L=Lublin, O=skich, OU=ECM, CN=test klient, OID.2.5.4.97=VATPL-1801908070
+                </ds:X509IssuerName>
+                ds:X509SerialNumber161647343748261934555458151997060629395
+                </ds:X509SerialNumber>
+                </xades:IssuerSerial>
+                </xades:Cert>
+                </xades:SigningCertificate>
+                </xades:SignedSignatureProperties>
+                xades:SignedDataObjectProperties
+xades:CommitmentTypeIndication
+xades:CommitmentTypeId
+xades:Identifierhttp://uri.etsi.org/01903/v1.2.2#ProofOfApproval
+                </xades:Identifier>
+                </xades:CommitmentTypeId>
+                xades:AllSignedDataObjects/
+                </xades:CommitmentTypeIndication>
+                </xades:SignedDataObjectProperties>
+            </xades:SignedProperties>
+        </xades:QualifyingProperties>
+        </ds:Object>
+    </ds:Signature>
+</ns3:InitSessionSignedRequest>

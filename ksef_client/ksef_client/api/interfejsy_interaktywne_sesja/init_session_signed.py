@@ -1,6 +1,10 @@
 from typing import Any, Dict, Optional, Union
 
 import httpx
+from api.common import get_header
+from api.consts import OCTET
+
+from ksef_client.ksef_client.models.init_session_signed import InitSessionSignedRequest
 
 from ...client import Client
 from ...models.exception_response import ExceptionResponse
@@ -50,6 +54,7 @@ def _build_response(*, response: httpx.Response) -> Response[Union[ExceptionResp
 def sync_detailed(
     *,
     client: Client,
+    request_body: InitSessionSignedRequest 
 ) -> Response[Union[ExceptionResponse, InitSessionResponse]]:
     """Inicjalizacja sesji, wskazanie kontekstu, uwierzytelnienie i autoryzacja
 
@@ -63,6 +68,11 @@ def sync_detailed(
     kwargs = _get_kwargs(
         client=client,
     )
+    
+    kwargs.update( {
+        "data" : request_body.bytes,
+        "headers" : get_header(content_type=OCTET)
+    })
 
     response = httpx.request(
         verify=client.verify_ssl,

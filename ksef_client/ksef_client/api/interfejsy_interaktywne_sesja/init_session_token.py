@@ -4,7 +4,7 @@ import httpx
 from api.common import get_header
 from api.consts import OCTET
 
-from ksef_client.ksef_client.models.init_session_token import InitSessionTokenRequest
+from ksef_client.ksef_client.models.init_session_signed import InitSessionSignedRequest
 
 from ...client import Client
 from ...models.exception_response import ExceptionResponse
@@ -54,7 +54,7 @@ def _build_response(*, response: httpx.Response) -> Response[Union[ExceptionResp
 def sync_detailed(
     *,
     client: Client,
-    request_body: InitSessionTokenRequest 
+    request_body: InitSessionSignedRequest 
 ) -> Response[Union[ExceptionResponse, InitSessionResponse]]:
     """Inicjalizacja sesji, wskazanie kontekstu, uwierzytelnienie i autoryzacja
 
