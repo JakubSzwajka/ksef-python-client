@@ -1,7 +1,6 @@
 import ast
-from api.consts import SIGN_INIT_FILE, TEST_ENDPOINT_URL, TOKEN_INIT_FILE, XML_SAMPLES_ROOT
-from api.common import get_header
-from ksef_client import ksef_client
+from datetime import datetime
+from config.consts import CERT, KEY, KEYS_ROOT, SIGN_INIT_FILE, TEST_ENDPOINT_URL, XML_SAMPLES_ROOT
 from ksef_client.ksef_client import Client
 from ksef_client.ksef_client.models.authorisation_challenge_response import AuthorisationChallengeResponse
 from ksef_client.ksef_client.models.authorisation_challenge_request import AuthorisationChallengeRequest
@@ -13,12 +12,21 @@ from ksef_client.ksef_client.types import Response
 from ksef_client.ksef_client.models.init_session_signed import InitSessionSignedRequest 
 from ksef_client.ksef_client.api.interfejsy_interaktywne_sesja import init_session_signed
 from ksef_client.ksef_client.models.init_session_response import InitSessionResponse
+from tools.KSeF_signer import KSeF_signer
 
-from KSeF_xml import KSeF_xml
+from tools.KSeF_xml import KSeF_xml
+from tools.utils import get_header
+import click
 
-IDENTIFIER = '1111111112'
+# IDENTIFIER = '3385150969'
+IDENTIFIER = '1168523215'
 
-def main():
+@click.command()
+@click.option('--sign', default=False, help='Sign request')
+@click.option('--challenge', default=False, help='Challenge request')
+@click.option('--xml_path', default=None, help='Send signed')
+@click.option('--python', default=None, help='full python process')
+def main(sign, challenge, xml_path, python):
     
     data = {
         "type": 'onip',
@@ -26,20 +34,53 @@ def main():
     }
     
     client = create_client(TEST_ENDPOINT_URL, header=get_header( ))
-    response = authorization_challange_call(client, data)
-    r_data = get_response_data(response)
     
-    CHALLANGE = r_data.get('challenge')
+    if challenge or python:
+        response = authorization_challange_call(client, data)
+        r_data = get_response_data(response)
+        
+        CHALLANGE = r_data.get('challenge')
+        
+        xml: KSeF_xml = KSeF_xml(XML_SAMPLES_ROOT + SIGN_INIT_FILE)
+        xml = set_challenge(xml, CHALLANGE)
+        save_signed(xml, f'onip_{IDENTIFIER}_initSessionSignedRequest.xml')
     
-    xml: KSeF_xml = KSeF_xml(XML_SAMPLES_ROOT + SIGN_INIT_FILE)
-    xml = set_challenge(xml, CHALLANGE)
+    if python:
+        xml = sign_doc(xml)
+        save_signed(xml, f'onip_{IDENTIFIER}_initSessionSignedRequest.xml')
+        
+        body = InitSessionSignedRequest(bytes=xml.to_bytes())
+        response: Response[InitSessionResponse] = init_session_signed.sync_detailed(client=client, request_body=body)
 
-    body = InitSessionSignedRequest(bytes=xml.to_bytes())
-    response: Response[InitSessionResponse] = init_session_signed.sync_detailed(client=client, request_body=body)
-
-    r_data = get_response_data(response)
+        r_data = get_response_data(response)
     
+    if xml_path: 
+        path = '/Users/jakubszwajka/Desktop/to_sign/signed/onip_3385150969_initSessionSignedRequest.xml'
+        xml: KSeF_xml = KSeF_xml(path)
+        
+        body = InitSessionSignedRequest(bytes=xml.to_bytes())
+        response: Response[InitSessionResponse] = init_session_signed.sync_detailed(client=client, request_body=body)
 
+        r_data = get_response_data(response)
+
+
+""" 
+    --------------------------------------------------------------------
+"""
+def save_signed(
+    xml: KSeF_xml, 
+    name = f'signed_{int(datetime.timestamp(datetime.now( )))}.xml', 
+    folder = '/Users/jakubszwajka/Desktop/to_sign/'):
+        
+    with open(folder + name, 'w') as f: 
+        f.write(xml.to_string())
+    
+def sign_doc(xml: KSeF_xml):
+    signer: KSeF_signer = KSeF_signer(KEYS_ROOT + KEY, KEYS_ROOT + CERT)
+    signed_root = signer.sign(xml.root)
+    xml.root = signed_root
+    return xml
+    
 def authorization_challange_call(client, data):
     context_identifier_type = SubjectIdentifierByType.from_dict(data)
     request_body = AuthorisationChallengeRequest(context_identifier=context_identifier_type)

@@ -2,7 +2,7 @@ from typing import Any, Dict, Optional, Union
 
 import httpx
 from api.common import get_header
-from api.consts import OCTET
+from config.consts import OCTET
 
 from ksef_client.ksef_client.models.init_session_signed import InitSessionSignedRequest
 
