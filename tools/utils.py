@@ -1,8 +1,14 @@
 from config.consts import ACCEPT, JSON
 
 
-def get_header(content_type = JSON):
-    return {
+def get_header(content_type = JSON, token=None):
+    
+    header = {
         'Accept': ACCEPT,
         'content-type': content_type,
     }
+    
+    if token:
+        header['SessionToken'] = token
+    
+    return header

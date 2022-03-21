@@ -1,5 +1,6 @@
 
 from api.functions.general import create_client, get_response_data
+from api.functions.token import generate_authorization_token
 from config.consts import  SIGN_INIT_FILE, TEST_ENDPOINT_URL, XML_SAMPLES_ROOT
 
 from api.functions import authorization_challange_call, set_challenge, save_signed
@@ -14,16 +15,17 @@ from tools.utils import get_header
 import click
 
 # IDENTIFIER = '5250001090'
-FUNCTIONS = ['challenge', 'set_challenge', 'session_token']
+FUNCTIONS = ['challenge', 'set_challenge', 'session_token', 'generate_token']
 
 @click.command()
 @click.argument('func',required=True, type=click.Choice(FUNCTIONS))
 @click.option('--identifier', type=int, help='Identifier - nip - 10 digit')
 @click.option('--xml_path', default=None, help='Path to xml to be send or save')
 @click.option('--challenge', default=None, help='Challenge to be set')
-def main(identifier, func, challenge, xml_path):
+@click.option('--token', default=None, help='Session token')
+def main(identifier, func, challenge, xml_path, token):
     
-    client = create_client(TEST_ENDPOINT_URL, header=get_header( ))
+    client = create_client(TEST_ENDPOINT_URL, header=get_header(token=token))
     
     if func == 'challenge':
         assert identifier != None, "Please specify identifier to generate challenge"
@@ -46,7 +48,13 @@ def main(identifier, func, challenge, xml_path):
         response: Response[InitSessionResponse] = init_session_signed.sync_detailed(client=client, request_body=body)
         r_data = get_response_data(response)
         return
-        
+    
+    if func == 'generate_token':
+        assert token != None, "Please provide session token"
+        response = generate_authorization_token(client, token)
+        r_data = get_response_data(response)
+        return
+                
     raise Exception('which func. should i run? xd')
 
 if __name__ == '__main__':
