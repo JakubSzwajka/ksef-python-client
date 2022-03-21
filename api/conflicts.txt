@@ -1,0 +1,75 @@
+Unable to parse schema /components/schemas/CredentialsIdentifierRequestIndividualCertificateFingerprintType
+
+Found conflicting properties named identifier when creating CredentialsIdentifierRequestIndividualCertificateFingerprintType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsIdentifierRequestIndividualNipType
+
+Found conflicting properties named identifier when creating CredentialsIdentifierRequestIndividualNipType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsIdentifierRequestIndividualPeselType
+
+Found conflicting properties named identifier when creating CredentialsIdentifierRequestIndividualPeselType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsIdentifierRequestInstitutionalNipType
+
+Found conflicting properties named identifier when creating CredentialsIdentifierRequestInstitutionalNipType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsIdentifierResponseAuthorisationTokenType
+
+Found conflicting properties named identifier when creating CredentialsIdentifierResponseAuthorisationTokenType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsIdentifierResponseIndividualCertificateFingerprintType
+
+Found conflicting properties named identifier when creating CredentialsIdentifierResponseIndividualCertificateFingerprintType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsIdentifierResponseIndividualNipType
+
+Found conflicting properties named identifier when creating CredentialsIdentifierResponseIndividualNipType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsIdentifierResponseIndividualPeselType
+
+Found conflicting properties named identifier when creating CredentialsIdentifierResponseIndividualPeselType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsParentType
+
+Found conflicting properties named identifier when creating CredentialsParentType: Properties has conflicting values
+
+
+Unable to parse schema /components/schemas/CredentialsPlainType
+
+invalid data in items of array named "credentialsRoleList": Could not find reference in parsed models or enums
+
+Reference(ref='#/components/schemas/CredentialsRoleResponseStandardDetailsType')
+
+Unable to parse schema /components/schemas/CredentialsRoleResponseStandardDetailsType
+
+Found conflicting properties named roleType when creating CredentialsRoleResponseStandardDetailsType: <class 'openapi_python_client.parser.properties.model_property.ModelProperty'>, <class 'openapi_python_client.parser.properties.enum_property.EnumProperty'>Properties have incompatible types
+
+
+Unable to parse schema /components/schemas/CredentialsRoleResponseStandardPlainType
+
+Found conflicting properties named roleType when creating CredentialsRoleResponseStandardPlainType: <class 'openapi_python_client.parser.properties.model_property.ModelProperty'>, <class 'openapi_python_client.parser.properties.enum_property.EnumProperty'>Properties have incompatible types
+
+
+Unable to parse schema /components/schemas/CredentialsRoleResponseTokenType
+
+Found conflicting properties named roleType when creating CredentialsRoleResponseTokenType: <class 'openapi_python_client.parser.properties.model_property.ModelProperty'>, <class 'openapi_python_client.parser.properties.enum_property.EnumProperty'>Properties have incompatible types
+
+
+Unable to parse schema /components/schemas/CredentialsTokenType
+
+Unable to parse this part of your OpenAPI document: : Could not find reference in parsed models or enums
+
+Reference(ref='#/components/schemas/CredentialsIdentifierResponseAuthorisationTokenType')
+
+Unable to parse schema /components/schemas/CredentialsRoleResponseGrantedForInstitutionType
+
+Found conflicting properties named roleType when creating CredentialsRoleResponseGrantedForInstitutionType: <class 'openapi_python_client.parser.properties.model_property.ModelProperty'>, <class 'openapi_python_client.parser.properties.enum_property.EnumProperty'>Properties have incompatible types
