@@ -16,7 +16,7 @@ def get_response_data(response, print_data = True):
         response_data = ast.literal_eval(response.content.decode('UTF-8'))     
         if print_data:
             print(response_data)
-    except ValueError as e:
+    except (ValueError, AttributeError)as e:
         print(e)
         print('----------')
         print(response)

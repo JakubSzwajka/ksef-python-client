@@ -1,10 +1,11 @@
 from typing import Any, Dict, Optional, Union
 
 import httpx
-from api.common import get_header
+# from api.utils import get_header
 from config.consts import OCTET
 
 from ksef_client.ksef_client.models.init_session_signed import InitSessionSignedRequest
+from tools.utils import get_header
 
 from ...client import Client
 from ...models.exception_response import ExceptionResponse

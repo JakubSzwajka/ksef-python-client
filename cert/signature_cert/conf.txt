@@ -1,0 +1,13 @@
+[ req ]
+distinguished_name = dn
+prompt = no
+
+[ dn ]
+CN = Jan Kowalski
+SN = Kowalski
+GN = Jan
+O = Firma Testowa
+C = PL
+L = Mazowieckie
+serialNumber = NIP-3385150969
+description = "Jan Kowalski NIP-3385150969"

@@ -1,0 +1,9 @@
+[ req ]
+distinguished_name = dn
+prompt = no
+
+[ dn ]
+CN = Testowa Firma
+O = Firma Testowa
+C = PL
+organizationIdentifier=VATPL-3385150969

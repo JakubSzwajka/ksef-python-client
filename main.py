@@ -1,6 +1,6 @@
 
 from api.functions.general import create_client, get_response_data
-from api.functions.token import generate_authorization_token
+from api.functions.token import generate_authorization_token, generate_session_token_init_signed, generate_session_token_init_token
 from config.consts import  SIGN_INIT_FILE, TEST_ENDPOINT_URL, XML_SAMPLES_ROOT
 
 from api.functions import authorization_challange_call, set_challenge, save_signed
@@ -23,7 +23,9 @@ FUNCTIONS = ['challenge', 'set_challenge', 'session_token', 'generate_token']
 @click.option('--xml_path', default=None, help='Path to xml to be send or save')
 @click.option('--challenge', default=None, help='Challenge to be set')
 @click.option('--token', default=None, help='Session token')
-def main(identifier, func, challenge, xml_path, token):
+@click.option('--auth_token', default=None, help='Authorization token')
+@click.option('--challenge_timestamp', default=None, help='Challenge timestamp')
+def main(identifier, func, challenge, xml_path, token, auth_token, challenge_timestamp):
     
     client = create_client(TEST_ENDPOINT_URL, header=get_header(token=token))
     
@@ -31,6 +33,24 @@ def main(identifier, func, challenge, xml_path, token):
         assert identifier != None, "Please specify identifier to generate challenge"
         response = authorization_challange_call(client, identifier)
         r_data = get_response_data(response)
+        
+        ch = r_data.get('timestamp')
+        from datetime import datetime
+        import pytz
+        from time import gmtime
+        utc_datetime = datetime.utcnow()
+        # ch = '2022-03-24T17:22:05.420Z'
+        dt_obj = datetime.strptime(ch,'%Y-%m-%dT%H:%M:%S.%fZ')
+        dt_obj = dt_obj.replace(microsecond=0)
+        millisec = dt_obj.timestamp() * 1000
+        millisec += 3600000
+        print(f'Miliseconds: {millisec}')
+        
+        print(dt_obj.tzinfo)
+        print(dt_obj)
+
+        
+        
         return
     
     if func == 'set_challenge':
@@ -42,16 +62,20 @@ def main(identifier, func, challenge, xml_path, token):
         return
     
     if func == 'session_token':
-        assert xml_path != None, "Please provide xml_path with signed file to be send"
-        xml: KSeF_xml = KSeF_xml(xml_path)
-        body = InitSessionSignedRequest(bytes=xml.to_bytes())
-        response: Response[InitSessionResponse] = init_session_signed.sync_detailed(client=client, request_body=body)
+        assert xml_path != None or auth_token != None, "Please provide xml_path with signed file to be send or authorization token"
+        assert not ( xml_path != None and auth_token !=None ), "Choose one method to obtain session token. xml for initSigned or auth token for initToken"
+        
+        if xml_path:
+            response = generate_session_token_init_signed(client, xml_path)
+        if auth_token:
+            assert challenge_timestamp != None, "To generate session token with InitToken, provide timestamp"
+            response = generate_session_token_init_token(client, auth_token, challenge_timestamp)
         r_data = get_response_data(response)
         return
     
     if func == 'generate_token':
         assert token != None, "Please provide session token"
-        response = generate_authorization_token(client, token)
+        response = generate_authorization_token(client)
         r_data = get_response_data(response)
         return
                 
